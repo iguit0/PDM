@@ -9,9 +9,10 @@ using namespace std;
 
 class PDM {
     public:
-    ifstream f;
-    string nomeArq;
 
-    PDM(string nomeArq);
+    ifstream f; // Objeto p/ leitura de arquivos
+    string nomeArq; // nome da instancia
+
+    PDM(string nomeArq); // construtor e destrutor
     virtual ~PDM();
 };
