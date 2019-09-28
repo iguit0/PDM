@@ -7,9 +7,9 @@
 
 using namespace std;
 
-int main() {
-    cout << "Teste";
-    PDM pdm("nomeInstancia.txt");
+int main()
+{
+    PDM pdm("SOM-a_1_n25_m2.txt");
 
     return 1;
 }
