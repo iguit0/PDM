@@ -18,10 +18,29 @@ PDM::PDM(string nomeArq) : nomeArq(nomeArq)
     cout << "N: " << N << "\tM: " << M << "\n"
          << endl;
 
-    for (int i = 0; i < N; i++)
+    int total = ((N*N)-25)/2;
+
+    matrizDist = vector<vector<double>>(25,vector<double>(25));
+
+    for (int i = 0; i < total; i++)
     {
+        double x,y;
+        f >> x;
+        f >> y;
         f >> val;
-        cout << " " << val;
+        matrizDist[x][y] = val;
+        matrizDist[y][x] = val;
+    }
+
+
+    for(int j=0;j<25;j++) {
+        for(int i=0;i<25;i++)
+        {
+            cout << matrizDist[i][j] << ' ';
+            
+        }
+        cout << endl;
+            
     }
 }
 

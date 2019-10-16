@@ -26,4 +26,5 @@ public:
 
     //matriz de distancias
     vector<vector<double>> matrizDist;
+
 };
