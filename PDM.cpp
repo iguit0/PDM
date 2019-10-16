@@ -62,8 +62,10 @@ vector<int> PDM::geraSolucaoAleatoria() {
     return solucao;
 }
 
-vector<int> PDM::geraSolucaoGulosa() {
+vector<int> PDM::geraSolucaoGulosaSomaIndices() {
     vector<int> solucao;
+
+    int elementoAtual = 0;
 
     vector<int> LC; // lista de candidatos
 
@@ -71,9 +73,43 @@ vector<int> PDM::geraSolucaoGulosa() {
     for(int i=0;i<N;i++)
         LC.push_back(i);
 
-    
+    while(!LC.empty()) {
+        int pos = retornaMaiorDist(elementoAtual, LC);
 
-    return LC;
+        solucao.push_back(LC[pos]);
+
+        elementoAtual = LC[pos];
+
+        LC.erase(LC.begin() + pos);
+
+    }
+
+    return solucao;
+}
+
+vector<int> PDM::geraSolucaoGulosaMediaIndices() {
+    vector<int> solucao;
+
+    int elementoAtual = 0;
+
+    vector<int> LC; // lista de candidatos
+
+    // preenchendo lista de candidatos
+    for(int i=0;i<N;i++)
+        LC.push_back(i);
+
+    while(!LC.empty()) {
+        int pos = retornaMediaDist(elementoAtual,LC);
+
+        solucao.push_back(LC[pos]);
+
+        elementoAtual = LC[pos];
+
+        LC.erase(LC.begin() + pos);
+
+    }
+
+    return solucao;
 }
 
 double PDM::retornaMaiorDist(int elementoAtual, vector<int> &LC) {
@@ -81,12 +117,12 @@ double PDM::retornaMaiorDist(int elementoAtual, vector<int> &LC) {
 	double maiorPos = 0;
 
     // armazena a maior distancia
-    double maiorDist = matrizDist[0][LC[0]];
+    double maiorDist = matrizDist[elementoAtual][LC[0]];
 
     // busca pelo elemento que possui maior diversidade (distancia)
     for(int i=0;i<int(LC.size());i++) {
         if(matrizDist[elementoAtual][LC[i]] > maiorDist) {
-            cout << i;
+            maiorDist = matrizDist[elementoAtual][LC[i]];
             maiorPos = i;
         }
     }
@@ -94,9 +130,25 @@ double PDM::retornaMaiorDist(int elementoAtual, vector<int> &LC) {
 	return maiorPos;
 }
 
+double PDM::retornaMediaDist(int elementoAtual, vector<int> &LC) {
+    // armazena a posicao com distancia media
+    double mediaPos = 0;
+    double aux;
+    aux = double(N*1.0);
+
+    double mediaDist = matrizDist[elementoAtual][LC[0]];
+
+    for(int j=0;j<int(LC.size());j++) {
+        if(matrizDist[elementoAtual][LC[j]] > mediaDist) {
+            mediaDist = (matrizDist[elementoAtual][LC[j]])/N;
+            mediaPos = j;
+        }
+    }
+
+    return mediaPos;
+}
 
 void PDM::imprimeSolucao(vector<int> &solucao) {
-    cout << "\t\t*** IMPRIMINDO SOLUCAO ***" << endl;
 	cout << "[ ";
 	for (int i = 0; i < N; i++)
 		cout << solucao[i] << ", ";

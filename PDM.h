@@ -39,10 +39,15 @@ public:
     // gerar Solucao Aleatoria
     vector<int> geraSolucaoAleatoria();
 
-    // gerar solucao gulosa
-    vector<int> geraSolucaoGulosa();
+    // gerar solucao gulosa (soma indices)
+    vector<int> geraSolucaoGulosaSomaIndices();
 
-    // retorna a posicao do elemento mais distante
+    // gerar solucao gulosa (media indices)
+    vector<int> geraSolucaoGulosaMediaIndices();
+
+    // retorna a posicao do elemento correspondente a soma dos indices de diversidade
     double retornaMaiorDist(int elementoAtual, vector<int> &LC);
 
+    // retorna a posicao do elemento media dos indices de diversidade
+    double retornaMediaDist(int elementoAtual, vector<int> &LC);
 };
