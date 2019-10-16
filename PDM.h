@@ -27,4 +27,19 @@ public:
     //matriz de distancias
     vector<vector<double>> matrizDist;
 
+    // solucao
+    vector<int> solucao;
+
+    // gerar Solucao
+    vector<int> geraSol();
+
+    // imprimir matriz de distancias
+    void imprimeMatrizDist(vector<vector<double>> &matrizDist);
+
+    // imprimir solucao
+    void imprimeSolucao(vector<int> &sol);
+
+    // funcao de avaliacao
+    double funcaoAvaliacao(vector<int> &sol);
+
 };
