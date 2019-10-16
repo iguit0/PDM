@@ -27,19 +27,22 @@ public:
     //matriz de distancias
     vector<vector<double>> matrizDist;
 
+    // funcao de avaliacao
+    double funcaoAvaliacao(vector<int> &sol);
+
     // solucao
     vector<int> solucao;
-
-    // gerar Solucao
-    vector<int> geraSol();
-
-    // imprimir matriz de distancias
-    void imprimeMatrizDist(vector<vector<double>> &matrizDist);
 
     // imprimir solucao
     void imprimeSolucao(vector<int> &sol);
 
-    // funcao de avaliacao
-    double funcaoAvaliacao(vector<int> &sol);
+    // gerar Solucao Aleatoria
+    vector<int> geraSolucaoAleatoria();
+
+    // gerar solucao gulosa
+    vector<int> geraSolucaoGulosa();
+
+    // retorna a posicao do elemento mais distante
+    double retornaMaiorDist(int elementoAtual, vector<int> &LC);
 
 };
