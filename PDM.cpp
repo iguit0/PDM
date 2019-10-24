@@ -34,13 +34,8 @@ PDM::PDM(string nomeArq) : nomeArq(nomeArq)
     }
 
     // imprimindo matriz Dist
-    cout << endl
-		 << "Matriz de distancias: " << endl;
-    for(int x=0;x<N;x++){
-        if(x==0) cout << ' ';
-        cout << x << ' ';
-    }
-    cout << endl;
+    cout << "Matriz de distancias: " << endl;
+
     cout << endl;
     for(int j=0;j<N;j++) {
         cout << "[" << j << "] ";
@@ -49,13 +44,13 @@ PDM::PDM(string nomeArq) : nomeArq(nomeArq)
         }
         cout << endl;      
     }
+
 }
 
 vector<int> PDM::geraSolucaoAleatoria() {
     
-    for(int i=0;i<N;i++) {
+    for(int i=0;i<N;i++)
         solucao[i] = i;
-    }
 
     random_shuffle(solucao.begin(), solucao.end());
 
@@ -65,16 +60,23 @@ vector<int> PDM::geraSolucaoAleatoria() {
 vector<int> PDM::geraSolucaoGulosaSomaIndices() {
     vector<int> solucao;
 
-    int elementoAtual = 0;
+    double diversidadeTotal = 0;
 
-    vector<int> LC; // lista de candidatos
+    // soma distancias
+    for(int i=0;i<N;i++)
+        for(int j=0;j<N;j++)
+            diversidadeTotal += matrizDist[i][j];
 
-    // preenchendo lista de candidatos
+    cout << endl << "Diversidade Total: " << diversidadeTotal/2 << endl;
+
+    /* preenchendo lista de candidatos
     for(int i=0;i<N;i++)
         LC.push_back(i);
 
+
     while(!LC.empty()) {
         int pos = retornaMaiorDist(elementoAtual, LC);
+        cout << pos;
 
         solucao.push_back(LC[pos]);
 
@@ -84,7 +86,7 @@ vector<int> PDM::geraSolucaoGulosaSomaIndices() {
 
     }
 
-    return solucao;
+    return solucao;*/
 }
 
 vector<int> PDM::geraSolucaoGulosaMediaIndices() {
@@ -155,14 +157,14 @@ void PDM::imprimeSolucao(vector<int> &solucao) {
 	cout << "]" << endl;
 }
 
-double PDM::funcaoAvaliacao(vector<int> &sol) {
-    double soma = 0;
+double PDM::funcaoAvaliacao(vector<int> &solucao) {
+    double fitness = 0;
 
     for(int i=0;i<M-1;i++)
         for(int j=i+1;j<M;j++)
-            soma += matrizDist[sol[i]][sol[j]];
+            fitness += matrizDist[solucao[i]][solucao[j]];
 
-	return soma;
+	return fitness;
 }
 
 PDM::~PDM()

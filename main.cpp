@@ -9,29 +9,38 @@ using namespace std;
 
 int main()
 {
-    string nomeArquivo = "SOM-a_1_n25_m2.txt";
+    string nomeInstacia = "SOM-a_1_n25_m2.txt";
     srand(1); // semente fixa
-    PDM pdm(nomeArquivo);
+    PDM pdm(nomeInstacia);
 
-    vector<int> aleatoria = pdm.geraSolucaoAleatoria();
     vector<int> somaIndicesGulosa = pdm.geraSolucaoGulosaSomaIndices();
-    vector<int> mediaIndicesGulosa = pdm.geraSolucaoGulosaMediaIndices();
+    //vector<int> aleatoria = pdm.geraSolucaoAleatoria();
+    //vector<int> mediaIndicesGulosa = pdm.geraSolucaoGulosaMediaIndices();
 
 
-    cout << "Solucao Gulosa (soma dos indices): " << endl;
+    cout << endl;
+    cout << endl;
+
+    /*cout << "Solucao Gulosa (soma dos indices): " << endl;
     pdm.imprimeSolucao(somaIndicesGulosa);
 
     cout << "Funcao de avaliacao: " << pdm.funcaoAvaliacao(somaIndicesGulosa) << endl;
+
+    cout << endl;
 
     cout << "Solucao Gulosa (media dos indices): " << endl;
     pdm.imprimeSolucao(mediaIndicesGulosa);
 
     cout << "Funcao de avaliacao: " << pdm.funcaoAvaliacao(mediaIndicesGulosa) << endl;
 
+    cout << endl;
+
     cout << "Solucao Aleatoria: " << endl;
     pdm.imprimeSolucao(aleatoria);
 
     cout << "Funcao de avaliacao: " << pdm.funcaoAvaliacao(aleatoria) << endl;
+
+    cout << endl;*/
 
     return 1;
 }

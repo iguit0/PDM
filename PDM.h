@@ -28,7 +28,7 @@ public:
     vector<vector<double>> matrizDist;
 
     // funcao de avaliacao
-    double funcaoAvaliacao(vector<int> &sol);
+    double funcaoAvaliacao(vector<int> &solucao);
 
     // solucao
     vector<int> solucao;
