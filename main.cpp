@@ -17,7 +17,6 @@ int main()
     //vector<int> aleatoria = pdm.geraSolucaoAleatoria();
     //vector<int> mediaIndicesGulosa = pdm.geraSolucaoGulosaMediaIndices();
 
-
     cout << endl;
     cout << endl;
 
