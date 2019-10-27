@@ -60,6 +60,8 @@ vector<int> PDM::geraSolucaoAleatoria() {
 vector<int> PDM::geraSolucaoGulosaSomaIndices() {
     vector<int> solucao;
 
+    vector<pair<int,double>> LC(N);
+
     double diversidadeTotal = 0;
 
     // soma distancias
@@ -67,7 +69,7 @@ vector<int> PDM::geraSolucaoGulosaSomaIndices() {
         for(int j=0;j<N;j++)
             diversidadeTotal += matrizDist[i][j];
 
-    cout << endl << "Diversidade Total: " << diversidadeTotal/2 << endl;
+    cout << endl << "Diversidade Total: " << diversidadeTotal << endl;
 
     /* preenchendo lista de candidatos
     for(int i=0;i<N;i++)

@@ -9,7 +9,7 @@ using namespace std;
 
 int main()
 {
-    string nomeInstacia = "SOM-a_1_n25_m2.txt";
+    string nomeInstacia = "instancia.txt";
     srand(1); // semente fixa
     PDM pdm(nomeInstacia);
 
