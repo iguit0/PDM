@@ -14,23 +14,13 @@ int main()
     PDM pdm(nomeInstacia);
 
     vector<int> somaIndicesGulosa = pdm.geraSolucaoGulosaSomaIndices();
-    //vector<int> aleatoria = pdm.geraSolucaoAleatoria();
+    vector<int> aleatoria = pdm.geraSolucaoAleatoria();
     //vector<int> mediaIndicesGulosa = pdm.geraSolucaoGulosaMediaIndices();
 
-    cout << endl;
-    cout << endl;
-
-    /*cout << "Solucao Gulosa (soma dos indices): " << endl;
+    cout << "Solucao Gulosa (soma dos indices): " << endl;
     pdm.imprimeSolucao(somaIndicesGulosa);
 
     cout << "Funcao de avaliacao: " << pdm.funcaoAvaliacao(somaIndicesGulosa) << endl;
-
-    cout << endl;
-
-    cout << "Solucao Gulosa (media dos indices): " << endl;
-    pdm.imprimeSolucao(mediaIndicesGulosa);
-
-    cout << "Funcao de avaliacao: " << pdm.funcaoAvaliacao(mediaIndicesGulosa) << endl;
 
     cout << endl;
 
@@ -39,7 +29,16 @@ int main()
 
     cout << "Funcao de avaliacao: " << pdm.funcaoAvaliacao(aleatoria) << endl;
 
-    cout << endl;*/
+    cout << endl;
+
+    /*cout << "Solucao Gulosa (media dos indices): " << endl;
+    pdm.imprimeSolucao(mediaIndicesGulosa);
+
+    cout << "Funcao de avaliacao: " << pdm.funcaoAvaliacao(mediaIndicesGulosa) << endl;
+
+    cout << endl;
+
+    */
 
     return 1;
 }

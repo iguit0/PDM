@@ -21,7 +21,7 @@ PDM::PDM(string nomeArq) : nomeArq(nomeArq)
     int total = ((N * N) - N) / 2; // total matriz
 
     matrizDist = vector<vector<double>>(N, vector<double>(N));
-    solucao = vector<int>(N);
+    solucao = vector<int>(M);
 
     for (int i = 0; i < total; i++)
     {
@@ -50,7 +50,6 @@ PDM::PDM(string nomeArq) : nomeArq(nomeArq)
 
 vector<int> PDM::geraSolucaoAleatoria()
 {
-
     for (int i = 0; i < N; i++)
         solucao[i] = i;
 
@@ -61,38 +60,32 @@ vector<int> PDM::geraSolucaoAleatoria()
 
 vector<int> PDM::geraSolucaoGulosaSomaIndices()
 {
-    vector<int> solucao;
+    vector<pair<int, double>> LC; // lista de candidatos
 
-    vector<pair<int, double>> LC(N);
+    vector<int> distancias(N);
 
-    double diversidadeTotal = 0;
+    // soma as distancias
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            distancias[i] += matrizDist[i][j]; // somatorio distancias linhas
+        }
+        LC.push_back(make_pair(i,distancias[i]));
+    }
+    
+    // ordenar de acordo com a distancia
+    sort(LC.begin(), LC.end(), [](auto &left, auto &right) {
+        return left.second > right.second;
+    });
 
-    // soma distancias
-    for (int i = 0; i < N; i++)
-        for (int j = 0; j < N; j++)
-            diversidadeTotal += matrizDist[i][j];
-
-    cout << endl
-         << "Diversidade Total: " << diversidadeTotal << endl;
-
-    /* preenchendo lista de candidatos
-    for(int i=0;i<N;i++)
-        LC.push_back(i);
-
-
-    while(!LC.empty()) {
-        int pos = retornaMaiorDist(elementoAtual, LC);
-        cout << pos;
-
-        solucao.push_back(LC[pos]);
-
-        elementoAtual = LC[pos];
-
-        LC.erase(LC.begin() + pos);
-
+    for (int i = 0; i < int(LC.size()); i++)
+         cout << LC[i].first << " " << LC[i].second << endl; 
+    
+    for (int i = 0; i < M; i++) {
+        solucao[i] = LC[i].first;
+        cout << " " << solucao[i];
     }
 
-    return solucao;*/
+    return solucao;
 }
 
 vector<int> PDM::geraSolucaoGulosaMediaIndices()
