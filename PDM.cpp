@@ -88,74 +88,6 @@ vector<int> PDM::geraSolucaoGulosaSomaIndices()
     return solucao;
 }
 
-vector<int> PDM::geraSolucaoGulosaMediaIndices()
-{
-    vector<int> solucao;
-
-    int elementoAtual = 0;
-
-    vector<int> LC; // lista de candidatos
-
-    // preenchendo lista de candidatos
-    for (int i = 0; i < N; i++)
-        LC.push_back(i);
-
-    while (!LC.empty())
-    {
-        int pos = retornaMediaDist(elementoAtual, LC);
-
-        solucao.push_back(LC[pos]);
-
-        elementoAtual = LC[pos];
-
-        LC.erase(LC.begin() + pos);
-    }
-
-    return solucao;
-}
-
-double PDM::retornaMaiorDist(int elementoAtual, vector<int> &LC)
-{
-    // armazena a posicao com maior distancia
-    double maiorPos = 0;
-
-    // armazena a maior distancia
-    double maiorDist = matrizDist[elementoAtual][LC[0]];
-
-    // busca pelo elemento que possui maior diversidade (distancia)
-    for (int i = 0; i < int(LC.size()); i++)
-    {
-        if (matrizDist[elementoAtual][LC[i]] > maiorDist)
-        {
-            maiorDist = matrizDist[elementoAtual][LC[i]];
-            maiorPos = i;
-        }
-    }
-
-    return maiorPos;
-}
-
-double PDM::retornaMediaDist(int elementoAtual, vector<int> &LC)
-{
-    // armazena a posicao com distancia media
-    double mediaPos = 0;
-    double aux;
-    aux = double(N * 1.0);
-
-    double mediaDist = matrizDist[elementoAtual][LC[0]];
-
-    for (int j = 0; j < int(LC.size()); j++)
-    {
-        if (matrizDist[elementoAtual][LC[j]] > mediaDist)
-        {
-            mediaDist = (matrizDist[elementoAtual][LC[j]]) / N;
-            mediaPos = j;
-        }
-    }
-
-    return mediaPos;
-}
-
 void PDM::imprimeSolucao(vector<int> &solucao)
 {
     cout << "[ ";
@@ -168,9 +100,19 @@ double PDM::funcaoAvaliacao(vector<int> &solucao)
 {
     double fitness = 0;
 
-    for (int i = 0; i < M - 1; i++)
-        for (int j = i + 1; j < M; j++)
+    for (int i = 0; i < N; i++) {
+
+    
+    for (int j = i + 1; j < N; j++){
             fitness += matrizDist[solucao[i]][solucao[j]];
+            cout << i << " " << j << "  " << fitness << endl;
+    }
+
+    }
+
+    /*for (int i = 0; i < M - 1; i++)
+        for (int j = i + 1; j < M; j++)
+            fitness += matrizDist[solucao[i]][solucao[j]];*/
 
     return fitness;
 }
