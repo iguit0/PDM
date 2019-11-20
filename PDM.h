@@ -29,9 +29,16 @@ public:
 
     // funcao de avaliacao
     double funcaoAvaliacao(vector<int> &solucao);
+    
 
     // solucao
     vector<int> solucao;
+
+    vector<pair<int, double>> distanciaMaximaElementos; // vetor com a soma de distancia dos elementos
+
+    vector<pair<int,double>>distanciaElementos(); // função que calcula a soma de distancia dos elementos
+    
+    
 
     // imprimir solucao
     void imprimeSolucao(vector<int> &sol);
@@ -42,12 +49,15 @@ public:
     // gerar solucao gulosa (soma indices)
     vector<int> geraSolucaoGulosaSomaIndices();
 
+    vector<int> geraSolucaoSemiGulosa();
+
     // gerar solucao gulosa (media indices)
     vector<int> geraSolucaoGulosaMediaIndices();
-
-    // retorna a posicao do elemento correspondente a soma dos indices de diversidade
-    double retornaMaiorDist(int elementoAtual, vector<int> &LC);
-
-    // retorna a posicao do elemento media dos indices de diversidade
-    double retornaMediaDist(int elementoAtual, vector<int> &LC);
+    vector<int> descidaReduzida(vector<int> &solucao);
+    vector<int>descidaCompletaTroca(vector<int> &solucao, double foSol);
+    vector<int>descidaPrimeiroInsert(vector<int> &solucao, double foSol);
+    vector<int>descidaPrimeiroTroca(vector<int> &solucao, double foSol);
+    vector<int>descidaVizinhacaVariavel(vector<int> &sol, double foSol);
+    vector<int>multiStart(vector<int> &sol, double foSol);
+    
 };
