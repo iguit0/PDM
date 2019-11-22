@@ -9,7 +9,7 @@ using namespace std;
 
 int main()
 {
-    string nomeInstacia = "SOM-a_1_n25_m2.txt";
+    string nomeInstacia = "exe.txt";
     srand(0); // semente fixa
     PDM pdm(nomeInstacia);
 
@@ -60,14 +60,11 @@ int main()
     aleatoria=pdm.descidaVizinhacaVariavel(aleatoria, pdm.funcaoAvaliacao(aleatoria));
     pdm.imprimeSolucao(aleatoria);
     cout << "\nFuncao de avaliacao apos descida completa troca  \n" <<pdm.funcaoAvaliacao(aleatoria) << endl;*/
-     cout << "\nSolucao apos multistart com  VND" << endl;
+     cout << "\nSolucao apos multistart c/ VND" << endl;
     
     aleatoria=pdm.multiStart(aleatoria, pdm.funcaoAvaliacao(aleatoria));
     pdm.imprimeSolucao(aleatoria);
-    cout << "\nFuncao de avaliacao apos descida completa troca  \n" <<pdm.funcaoAvaliacao(aleatoria) << endl;
-    
-
-
+    cout << "\nFuncao de avaliacao apos descida completa troca: " << pdm.funcaoAvaliacao(aleatoria) << endl;
 
     return 1;
 }

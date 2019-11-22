@@ -142,7 +142,6 @@ vector<pair<int,double>>PDM::distanciaElementos()
 }
 vector<int> PDM::geraSolucaoAleatoria()
 {
-    int x;
     for (int i = 0; i < N; i++)
     {
         solucao[i] = i;
@@ -305,9 +304,11 @@ vector<int> PDM::descidaPrimeiroTroca(vector<int> &solucao, double foSol)
 
     return solCorrente;
 }
+
+// VND
 vector<int> PDM::descidaVizinhacaVariavel(vector<int> &sol, double foSol)
 {
-    int k = 1, r = 3;
+    int k = 1, r = 4;
 
     double melhorSolucao = foSol, fitnessCorrente;
     vector<int> solucao = sol, vetorCorrente;
@@ -316,6 +317,25 @@ vector<int> PDM::descidaVizinhacaVariavel(vector<int> &sol, double foSol)
     int i = 0;
     while (k <= r)
     {
+
+        if (k == 4)
+        {
+            
+            vetorCorrente = descidaReduzida(solucao);
+            
+            fitnessCorrente = funcaoAvaliacao(vetorCorrente);
+            if (fitnessCorrente > melhorSolucao)
+            {
+                solucao = vetorCorrente;
+                melhorSolucao = fitnessCorrente;
+                k = 1;
+            }
+            else
+            {
+                k++;
+            }
+        }
+
         if (k == 3)
         {
             
@@ -371,7 +391,6 @@ vector<int> PDM::descidaVizinhacaVariavel(vector<int> &sol, double foSol)
                 k++;
             }
         }
-
         
     }
 
