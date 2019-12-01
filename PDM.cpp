@@ -37,6 +37,7 @@ PDM::PDM(string nomeArq) : nomeArq(nomeArq)
         
     distanciaMaximaElementos = distanciaElementos(); // vetor de soma das distancia dos elementos 
 }
+
 vector<int> PDM::descidaReduzida(vector<int> &solucao){
     double foBest, fo;
     int posI,posJ,swap;
@@ -70,9 +71,8 @@ vector<int> PDM::descidaReduzida(vector<int> &solucao){
     }while(melhora);
     
     return solucao;
-    
-
 }
+
 vector<int> PDM::descidaCompletaTroca(vector<int> &solucao, double foSol)
 {
     vector<int> solCorrente = solucao;
@@ -123,6 +123,7 @@ vector<int> PDM::descidaCompletaTroca(vector<int> &solucao, double foSol)
 
     return solCorrente;
 }
+
 vector<pair<int,double>>PDM::distanciaElementos()
 {
     vector<pair<int, double>> LE; // lista de elementos
@@ -140,6 +141,7 @@ vector<pair<int,double>>PDM::distanciaElementos()
    
     return LE;
 }
+
 vector<int> PDM::geraSolucaoAleatoria()
 {
     for (int i = 0; i < N; i++)
@@ -188,15 +190,15 @@ vector<int> PDM::geraSolucaoSemiGulosa()
     {
         solucao[i] = LC[i].first;
     }
-     cout << "\nVetor Solução Semi Gulosa : "<<endl<<endl;
+    cout << "\nVetor Solução Semi Gulosa : ";
     for (int i = 0; i < N; i++)
     {
         cout << " " << solucao[i];
     }
-    cout<<endl;
 
     return solucao;
 }
+
 vector<int> PDM::descidaPrimeiroInsert(vector<int> &solucao, double foSol)
 {
     vector<int> solCorrente = solucao;
@@ -255,6 +257,7 @@ vector<int> PDM::descidaPrimeiroInsert(vector<int> &solucao, double foSol)
 
     return solCorrente;
 }
+
 vector<int> PDM::descidaPrimeiroTroca(vector<int> &solucao, double foSol)
 {
     vector<int> solCorrente = solucao;
@@ -322,8 +325,8 @@ vector<int> PDM::descidaVizinhacaVariavel(vector<int> &sol, double foSol)
         {
             
             vetorCorrente = descidaReduzida(solucao);
-            
             fitnessCorrente = funcaoAvaliacao(vetorCorrente);
+            
             if (fitnessCorrente > melhorSolucao)
             {
                 solucao = vetorCorrente;
@@ -340,9 +343,8 @@ vector<int> PDM::descidaVizinhacaVariavel(vector<int> &sol, double foSol)
         {
             
             vetorCorrente = descidaPrimeiroInsert(solucao, melhorSolucao);
-
-            
             fitnessCorrente = funcaoAvaliacao(vetorCorrente);
+            
             if (fitnessCorrente > melhorSolucao)
             {
                 solucao = vetorCorrente;
@@ -357,10 +359,9 @@ vector<int> PDM::descidaVizinhacaVariavel(vector<int> &sol, double foSol)
 
         if (k == 1)
         {
-            
             vetorCorrente = descidaPrimeiroTroca(solucao, melhorSolucao);
-            
             fitnessCorrente = funcaoAvaliacao(vetorCorrente);
+
             if (fitnessCorrente > melhorSolucao)
             {
                 solucao = vetorCorrente;
@@ -378,8 +379,8 @@ vector<int> PDM::descidaVizinhacaVariavel(vector<int> &sol, double foSol)
         {
             
             vetorCorrente = descidaCompletaTroca(solucao, funcaoAvaliacao(solucao));
-            
             fitnessCorrente = funcaoAvaliacao(vetorCorrente);
+
             if (fitnessCorrente > melhorSolucao)
             {
                 solucao = vetorCorrente;
@@ -396,28 +397,30 @@ vector<int> PDM::descidaVizinhacaVariavel(vector<int> &sol, double foSol)
 
     return solucao;
 }
+
 vector<int> PDM::multiStart(vector<int> &sol, double foSol)
 {
-    double melhorFo=foSol, correnteFo=foSol;
+    double melhorFo = foSol, correnteFo = foSol;
     int numeroGeracoesSemMelhora=12;
     int contador;
     vector<int>melhorSol=sol,solCorrente=geraSolucaoAleatoria();
-    while(contador<numeroGeracoesSemMelhora){
-        solCorrente=descidaPrimeiroTroca(solCorrente,correnteFo);
-        correnteFo=funcaoAvaliacao(solCorrente);
+
+    while(contador < numeroGeracoesSemMelhora){
+        solCorrente = descidaPrimeiroTroca(solCorrente,correnteFo);
+        correnteFo = funcaoAvaliacao(solCorrente);
         if (correnteFo > melhorFo){
-            melhorSol=solCorrente;
-            melhorFo=correnteFo;
-            contador=0;
-        }else{
-            cout<<"iterações sem melhora: "<<contador<<endl;
-            solCorrente=geraSolucaoAleatoria();
+            melhorSol = solCorrente;
+            melhorFo = correnteFo;
+            contador = 0;
+        } else {
+            cout << "Iterações sem melhora: " << contador << endl;
+            solCorrente = geraSolucaoAleatoria();
             contador++;
         }
-       
     }
     return melhorSol;
 }
+
 void PDM::imprimeSolucao(vector<int> &solucao)
 {
     cout << "[ ";
@@ -428,6 +431,7 @@ void PDM::imprimeSolucao(vector<int> &solucao)
         cout << solucao[i] << ", ";
     cout << "]" << endl;
 }
+
 double PDM::funcaoAvaliacao(vector<int> &solucao)
 {
     double fitness = 0;
@@ -437,10 +441,9 @@ double PDM::funcaoAvaliacao(vector<int> &solucao)
         for(int j=i+1;j<M;j++){
                 //cout<<"i"<<solucao[i]<<"j"<<solucao[j]<<endl;
                 fitness += matrizDist[solucao[i]][solucao[j]];
-           
         }
-              
     }
+
     return fitness;
 }
 
