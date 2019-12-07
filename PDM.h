@@ -29,16 +29,13 @@ public:
 
     // funcao de avaliacao
     double funcaoAvaliacao(vector<int> &solucao);
-    
 
     // solucao
     vector<int> solucao;
 
     vector<pair<int, double>> distanciaMaximaElementos; // vetor com a soma de distancia dos elementos
 
-    vector<pair<int,double>>distanciaElementos(); // função que calcula a soma de distancia dos elementos
-    
-    
+    vector<pair<int, double>> distanciaElementos(); // função que calcula a soma de distancia dos elementos
 
     // imprimir solucao
     void imprimeSolucao(vector<int> &sol);
@@ -53,11 +50,12 @@ public:
 
     // gerar solucao gulosa (media indices)
     vector<int> geraSolucaoGulosaMediaIndices();
-    vector<int> descidaReduzida(vector<int> &solucao);
-    vector<int>descidaCompletaTroca(vector<int> &solucao, double foSol);
-    vector<int>descidaPrimeiroInsert(vector<int> &solucao, double foSol);
-    vector<int>descidaPrimeiroTroca(vector<int> &solucao, double foSol);
-    vector<int>descidaVizinhacaVariavel(vector<int> &sol, double foSol);
-    vector<int>multiStart(vector<int> &sol, double foSol);
-    
+    vector<int> shake(vector<int> &solucao, double tamanho);
+    vector<int> descidaCompletaTroca2P(vector<int> &solucao, double foSol);
+    vector<int> descidaCompletaTroca(vector<int> &solucao, double foSol);
+    vector<int> descidaPrimeiroInsert(vector<int> &solucao, double foSol);
+    vector<int> descidaPrimeiroTroca(vector<int> &solucao, double foSol);
+    vector<int> descidaVizinhacaVariavel(vector<int> &sol, double foSol);
+    vector<int> buscaVizinhacaVariavel(vector<int> &solucao, double foSol, double taxaShake, int iteracoes);
+    vector<int> multiStart(vector<int> &sol, double foSol);
 };
