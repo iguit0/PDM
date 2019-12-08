@@ -11,7 +11,7 @@ int main()
 {
     //string nomeInstancia ="SOM-a_1_n25_m2.txt";
     //string nomeInstancia ="GKD-c_2_n500_m50.txt";
-    string nomeInstancia="MDG-a_1_n500_m50.txt";
+    string nomeInstancia="GKD-c_20_n500_m50.txt";
     //string nomeInstancia = "SOM-a_20_n50_m15.txt";
     srand(1); // semente fixa
     PDM pdm(nomeInstancia);
