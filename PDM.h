@@ -7,8 +7,7 @@
 
 using namespace std;
 
-class PDM
-{
+class PDM {
 public:
     ifstream f;     // Objeto p/ leitura de arquivos
     string nomeArq; // nome da instancia
