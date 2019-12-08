@@ -53,7 +53,6 @@ public:
     vector<int> shake(vector<int> &solucao, double tamanho);
     vector<int> descidaCompletaTroca2P(vector<int> &solucao, double foSol);
     vector<int> descidaCompletaTroca(vector<int> &solucao, double foSol);
-    vector<int> descidaPrimeiroInsert(vector<int> &solucao, double foSol);
     vector<int> descidaPrimeiroTroca(vector<int> &solucao, double foSol);
     vector<int> descidaVizinhacaVariavel(vector<int> &sol, double foSol);
     vector<int> buscaVizinhacaVariavel(vector<int> &solucao, double foSol, double taxaShake, int iteracoes);

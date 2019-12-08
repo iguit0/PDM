@@ -1,3 +1,9 @@
+/*
+* ALUNO: IGOR LUCIO ROCHA ALVES - 3902
+* DISCIPLINA: SIN 492
+* PROBLEMA DA DIVERSIDADE MAXIMA - PDM
+*/
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -7,12 +13,13 @@
 
 using namespace std;
 
-int main()
-{
-    //string nomeInstancia ="SOM-a_1_n25_m2.txt";
+int main() {
+    //string nomeInstancia = "MDG-a_1_n500_m50.txt";
+    //string nomeInstancia ="SOM-b_5_n200_m20.txt";
+    string nomeInstancia="MDG-b_1_n500_m50.txt";
     //string nomeInstancia ="GKD-c_2_n500_m50.txt";
-    string nomeInstancia="GKD-c_20_n500_m50.txt";
-    //string nomeInstancia = "SOM-a_20_n50_m15.txt";
+    
+    
     srand(1); // semente fixa
     PDM pdm(nomeInstancia);
 
